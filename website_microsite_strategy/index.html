@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eskayvie Digital Campaign Ecosystem Brief V2</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --dark: #111827;
+      --blue: #1d4ed8;
+      --green: #047857;
+      --orange: #c2410c;
+      --red: #b91c1c;
+      --purple: #6d28d9;
+      --soft-blue: #eff6ff;
+      --soft-green: #ecfdf5;
+      --soft-orange: #fff7ed;
+      --soft-red: #fef2f2;
+      --soft-purple: #f5f3ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111827 0%, #1e3a8a 56%, #6d28d9 100%);
+      color: white;
+      padding: 42px;
+      border-radius: 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 18px 40px rgba(17, 24, 39, 0.18);
+    }
+
+    .hero .label {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      padding: 7px 11px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: 38px;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      max-width: 880px;
+      margin: 0;
+      color: rgba(255,255,255,0.88);
+      font-size: 17px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 22px 0 28px;
+    }
+
+    .meta {
+      background: var(--card);
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+    }
+
+    .meta span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .meta strong {
+      color: var(--dark);
+      font-size: 15px;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.04);
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      color: var(--dark);
+      font-size: 25px;
+      letter-spacing: -0.2px;
+    }
+
+    .section h3 {
+      margin: 24px 0 10px;
+      color: var(--dark);
+      font-size: 18px;
+    }
+
+    .section p { margin: 0 0 12px; }
+
+    .muted { color: var(--muted); }
+
+    .callout {
+      padding: 18px 20px;
+      border-radius: 16px;
+      margin: 16px 0;
+      border: 1px solid var(--line);
+    }
+
+    .callout.blue { background: var(--soft-blue); border-color: #bfdbfe; }
+    .callout.green { background: var(--soft-green); border-color: #bbf7d0; }
+    .callout.orange { background: var(--soft-orange); border-color: #fed7aa; }
+    .callout.red { background: var(--soft-red); border-color: #fecaca; }
+    .callout.purple { background: var(--soft-purple); border-color: #ddd6fe; }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .mini-card h3 { margin-top: 0; }
+
+    ul {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    li { margin-bottom: 8px; }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .tag.blue { background: var(--soft-blue); color: var(--blue); }
+    .tag.green { background: var(--soft-green); color: var(--green); }
+    .tag.orange { background: var(--soft-orange); color: var(--orange); }
+    .tag.red { background: var(--soft-red); color: var(--red); }
+    .tag.purple { background: var(--soft-purple); color: var(--purple); }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .flow-step {
+      flex: 1 1 170px;
+      background: #f9fafb;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      min-height: 110px;
+    }
+
+    .flow-step strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .flow-step small { color: var(--muted); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 14px;
+      font-size: 14px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 14px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f9fafb;
+      color: var(--dark);
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 34px;
+    }
+
+    .quote {
+      font-size: 20px;
+      line-height: 1.45;
+      font-weight: 700;
+      color: var(--dark);
+      border-left: 5px solid #1d4ed8;
+      padding: 10px 0 10px 18px;
+      margin: 20px 0;
+      background: #f9fafb;
+      border-radius: 0 14px 14px 0;
+    }
+
+    @media (max-width: 860px) {
+      .hero { padding: 30px 24px; }
+      .hero h1 { font-size: 30px; }
+      .meta-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .section { padding: 22px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { max-width: none; padding: 0; }
+      .section, .meta, .hero { box-shadow: none; }
+      .section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="label">Project Brief & Strategic Report</div>
+      <h1>Eskayvie Digital Campaign Ecosystem</h1>
+      <p>
+        Aligning product campaigns, microsite opportunities, SEO ownership, paid traffic routing and conversion flow between Eskayvie.com and product campaign assets.
+      </p>
+    </section>
+
+    <div class="meta-grid">
+      <div class="meta">
+        <span>Master Brand</span>
+        <strong>Eskayvie</strong>
+      </div>
+      <div class="meta">
+        <span>Main Website</span>
+        <strong>eskayvie.com</strong>
+      </div>
+      <div class="meta">
+        <span>Existing Microsite</span>
+        <strong>mindtropic.com.my</strong>
+      </div>
+      <div class="meta">
+        <span>Potential Microsites</span>
+        <strong>Phytax & Diffenz</strong>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2>1. Executive Summary</h2>
+      <p>
+        Eskayvie currently operates with two important digital assets: <strong>Eskayvie.com</strong> as the main brand and ecommerce website, and <strong>Mindtropic.com.my</strong> as a product-specific microsite for Mindtropic direct conversion campaigns.
+      </p>
+      <p>
+        Mindtropic.com.my was created to support focused campaign storytelling, education, parent awareness and direct conversion. The traffic for this campaign comes from <strong>Facebook Ads, Instagram Ads and Google Ads</strong>.
+      </p>
+      <div class="callout blue">
+        <strong>Main issue</strong>
+        Mindtropic.com.my is performing well and has started to outrank Eskayvie.com for Mindtropic-related keywords. This proves that the microsite works, but it also creates a risk where Eskayvie.com may lose SEO ownership and product authority for its own product.
+      </div>
+      <p>
+        At the same time, TTMM created wider traction beyond Mindtropic, especially for <strong>Diffenz</strong> and <strong>Phytax</strong>. The team has started Google Search Ads for these two products and is currently directing traffic to Eskayvie.com.
+      </p>
+      <div class="callout purple">
+        <strong>Updated opportunity</strong>
+        There is also potential to create dedicated microsites for Phytax and Diffenz. This can become a growth opportunity, but it must be managed with a clear decision rule so Eskayvie does not create too many disconnected product domains.
+      </div>
+      <p>
+        The recommendation is not to reject microsites completely. Instead, Eskayvie should use a controlled model: <strong>Eskayvie.com remains the master brand and ecommerce hub</strong>, while product microsites can be created only when the business case, campaign size, tracking setup and SEO governance are clear.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>2. Background</h2>
+      <p>
+        Eskayvie.com was originally positioned as the main digital home for the brand. It carries the role of master brand website, product ecosystem, ecommerce flow and long-term digital asset.
+      </p>
+      <p>
+        Later, Mindtropic.com.my was created as a dedicated product microsite to support Mindtropic direct conversion campaigns. This microsite gives the team more control over messaging, education, landing page flow and conversion.
+      </p>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <span class="tag blue">Eskayvie.com</span>
+          <h3>Main Brand Hub</h3>
+          <ul>
+            <li>Master brand website</li>
+            <li>Ecommerce and product ecosystem</li>
+            <li>Official product ownership hub</li>
+            <li>Long-term SEO authority asset</li>
+            <li>Main destination for product pages and checkout</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <span class="tag orange">Mindtropic.com.my</span>
+          <h3>Existing Product Microsite</h3>
+          <ul>
+            <li>Focused campaign page for Mindtropic</li>
+            <li>Direct conversion landing flow</li>
+            <li>Parent education and product storytelling</li>
+            <li>Traffic from FB Ads, IG Ads and Google Ads</li>
+            <li>Existing case study for microsite performance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. Current Digital Ecosystem</h2>
+      <p>
+        The current ecosystem is no longer about one product only. It has developed into a multi-product campaign structure involving Mindtropic, Diffenz and Phytax.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Current Traffic Source</th>
+            <th>Current Landing Destination</th>
+            <th>Current / Potential Direction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mindtropic</strong></td>
+            <td>Facebook Ads, Instagram Ads, Google Ads</td>
+            <td>Mindtropic.com.my</td>
+            <td>Existing microsite model with proven campaign momentum.</td>
+          </tr>
+          <tr>
+            <td><strong>Diffenz</strong></td>
+            <td>Google Search Ads</td>
+            <td>Eskayvie.com</td>
+            <td>Currently routed to Eskayvie.com, with potential to create a microsite if the campaign needs deeper education and stronger direct conversion.</td>
+          </tr>
+          <tr>
+            <td><strong>Phytax</strong></td>
+            <td>Google Search Ads</td>
+            <td>Eskayvie.com</td>
+            <td>Currently routed to Eskayvie.com, with potential to create a microsite if demand grows and the product needs a focused conversion funnel.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>4. What Happened with Mindtropic</h2>
+      <p>
+        Mindtropic.com.my was created with a clear purpose: to support direct conversion. It is more focused than a general product page because the full page can be built around one product, one audience and one conversion journey.
+      </p>
+
+      <div class="callout orange">
+        <strong>Key finding</strong>
+        Mindtropic.com.my has started to outrank Eskayvie.com for Mindtropic-related keywords. This means the microsite is doing its job, but it also shows a bigger ownership issue.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <span class="tag green">What is working</span>
+          <ul>
+            <li>Focused message for parents</li>
+            <li>Cleaner campaign storytelling</li>
+            <li>Better education flow for Mindtropic</li>
+            <li>Supports direct conversion from paid ads</li>
+            <li>Has SEO visibility and campaign momentum</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <span class="tag red">What is risky</span>
+          <ul>
+            <li>Eskayvie.com may lose product authority</li>
+            <li>Search traffic may sit outside the master brand</li>
+            <li>Brand ownership can become less clear</li>
+            <li>Tracking and reporting may become fragmented</li>
+            <li>The same issue may repeat with other products</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quote">
+        Mindtropic.com.my is not failing. It is performing. The real question is how Eskayvie controls SEO ownership while using microsites for conversion.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5. TTMM Impact and Product Spillover</h2>
+      <p>
+        TTMM was originally focused mainly on Mindtropic. However, as traction increased, the campaign started to create wider product interest beyond the original focus.
+      </p>
+      <p>
+        This wider traction created opportunity for other products, especially Diffenz and Phytax. This means Eskayvie now needs a more structured marketing operation flow for multi-product campaigns.
+      </p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <strong>TTMM Campaign</strong>
+          <small>Originally focused mainly on Mindtropic.</small>
+        </div>
+        <div class="flow-step">
+          <strong>Audience Traction</strong>
+          <small>Campaign created wider awareness and interest.</small>
+        </div>
+        <div class="flow-step">
+          <strong>Product Spillover</strong>
+          <small>Diffenz and Phytax started to gain attention.</small>
+        </div>
+        <div class="flow-step">
+          <strong>New Ads Direction</strong>
+          <small>Google Search Ads created for Diffenz and Phytax.</small>
+        </div>
+        <div class="flow-step">
+          <strong>Expansion Potential</strong>
+          <small>Phytax and Diffenz may need dedicated microsites if traction grows.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6. Current Direction for Diffenz and Phytax</h2>
+      <p>
+        Unlike Mindtropic, the team is not using separate microsites for Diffenz and Phytax at this stage. Instead, Google Search Ads traffic is being directed to Eskayvie.com.
+      </p>
+
+      <div class="callout green">
+        <strong>Why this is a strong current direction</strong>
+        Sending Diffenz and Phytax Google Search Ads traffic to Eskayvie.com helps strengthen the main website as the product, ecommerce and conversion hub. It also reduces the risk of creating more SEO fragmentation too early.
+      </div>
+
+      <ul>
+        <li>It keeps product ownership under Eskayvie.</li>
+        <li>It helps build traffic and engagement for Eskayvie.com.</li>
+        <li>It keeps the customer journey closer to the official ecommerce flow.</li>
+        <li>It avoids creating too many separate websites too early.</li>
+        <li>It creates a cleaner reporting and tracking structure.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>7. New Opportunity: Potential Microsites for Phytax and Diffenz</h2>
+      <p>
+        There is potential to create dedicated microsites for Phytax and Diffenz in the future. This should be viewed as an opportunity, not a problem. However, the Mindtropic experience shows that microsites must be controlled properly.
+      </p>
+
+      <div class="callout purple">
+        <strong>Strategic opportunity</strong>
+        If Phytax and Diffenz require deeper product education, stronger storytelling, specific customer journeys or separate campaign positioning, a microsite can help improve direct conversion.
+      </div>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <span class="tag green">Why microsites can help</span>
+          <ul>
+            <li>More focused product education</li>
+            <li>Cleaner conversion journey</li>
+            <li>Better landing page control for campaigns</li>
+            <li>Stronger storytelling around one product problem</li>
+            <li>Easier to test headline, offer, funnel and CTA</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <span class="tag red">Why microsites must be controlled</span>
+          <ul>
+            <li>Can compete with Eskayvie.com in search</li>
+            <li>Can split SEO authority between domains</li>
+            <li>Can confuse customers about official ownership</li>
+            <li>Can make reporting harder</li>
+            <li>Can increase maintenance workload</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quote">
+        The opportunity is not to create more websites. The opportunity is to create better product funnels with clear ownership.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>8. Key Issue: SEO Ownership and Marketing Operation Flow</h2>
+      <p>
+        The issue is not that Mindtropic.com.my is failing. The issue is that it is performing so well that it may create a separation between product visibility and master brand ownership.
+      </p>
+
+      <div class="callout red">
+        <strong>Core strategic issue</strong>
+        Mindtropic.com.my is winning visibility, but Eskayvie.com may be losing authority for one of its own products.
+      </div>
+
+      <p>
+        The bigger question is how Eskayvie should manage every product campaign moving forward. Without a clear rule, each product may start to build its own landing page, microsite, tracking setup and conversion path. This can make the whole ecosystem harder to manage.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>9. Pros and Risks of Microsites</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Pros</th>
+            <th>Risks</th>
+            <th>Control Needed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Focused product storytelling.</td>
+            <td>May outrank Eskayvie.com and reduce master brand SEO ownership.</td>
+            <td>Clear role, canonical strategy and internal linking back to Eskayvie.com.</td>
+          </tr>
+          <tr>
+            <td>Good for direct conversion campaigns.</td>
+            <td>Customer may not clearly understand the connection with Eskayvie.</td>
+            <td>Strong “Official product by Eskayvie” branding on microsite.</td>
+          </tr>
+          <tr>
+            <td>Easy to create a clean landing page flow.</td>
+            <td>Tracking and reporting can become split between domains.</td>
+            <td>Unified GA4, pixel, UTM and conversion reporting.</td>
+          </tr>
+          <tr>
+            <td>Useful for testing message, angle, offer and CTA.</td>
+            <td>May create a pattern where every product wants its own separate site.</td>
+            <td>Approval rule before creating any new microsite.</td>
+          </tr>
+          <tr>
+            <td>Can build strong campaign identity.</td>
+            <td>Requires extra maintenance, governance and content control.</td>
+            <td>Clear content owner, update cycle and campaign sunset plan.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>10. Recommended Role of Each Website</h2>
+
+      <div class="grid-2">
+        <div class="mini-card">
+          <span class="tag blue">Recommended Role</span>
+          <h3>Eskayvie.com</h3>
+          <ul>
+            <li>Main brand hub</li>
+            <li>Official product ownership hub</li>
+            <li>Ecommerce and checkout ecosystem</li>
+            <li>Long-term SEO authority asset</li>
+            <li>Main destination for evergreen product pages</li>
+            <li>Main reporting and conversion structure</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <span class="tag purple">Recommended Role</span>
+          <h3>Product Microsites</h3>
+          <ul>
+            <li>Campaign-specific conversion assets</li>
+            <li>Product education and storytelling pages</li>
+            <li>Used when product needs deeper funnel</li>
+            <li>Must clearly show Eskayvie ownership</li>
+            <li>Must link back to Eskayvie.com</li>
+            <li>Must not become disconnected product brands</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>11. Recommended Traffic Routing Model</h2>
+      <p>
+        Eskayvie needs a standard routing model so that every product campaign follows a clear structure.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Traffic Source</th>
+            <th>Mindtropic</th>
+            <th>Diffenz / Phytax Current</th>
+            <th>Diffenz / Phytax Potential</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Facebook Ads</td>
+            <td>Mindtropic.com.my</td>
+            <td>Not primary in current setup</td>
+            <td>Can be routed to microsite if Meta campaign needs education and storytelling.</td>
+          </tr>
+          <tr>
+            <td>Instagram Ads</td>
+            <td>Mindtropic.com.my</td>
+            <td>Not primary in current setup</td>
+            <td>Can be routed to microsite if content campaign creates cold or warm demand.</td>
+          </tr>
+          <tr>
+            <td>Google Search Ads</td>
+            <td>Mindtropic.com.my</td>
+            <td>Eskayvie.com</td>
+            <td>Start with Eskayvie.com. Consider microsite only if conversion data supports it.</td>
+          </tr>
+          <tr>
+            <td>Organic Search</td>
+            <td>Mindtropic.com.my and Eskayvie.com need alignment</td>
+            <td>Eskayvie.com</td>
+            <td>Eskayvie.com should remain the main authority source.</td>
+          </tr>
+          <tr>
+            <td>Retargeting</td>
+            <td>Can retarget back to Mindtropic or Eskayvie checkout flow</td>
+            <td>Eskayvie.com</td>
+            <td>Can retarget to microsite education page or Eskayvie checkout page depending on funnel stage.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>12. Recommended Marketing Operation Flow</h2>
+      <p>
+        This is the proposed flow for future product campaigns, including situations where a microsite is being considered.
+      </p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <strong>1. Campaign Trigger</strong>
+          <small>TTMM, ads, social content, KOL, PR or offline activation.</small>
+        </div>
+        <div class="flow-step">
+          <strong>2. Product Interest</strong>
+          <small>Identify which product is gaining traction.</small>
+        </div>
+        <div class="flow-step">
+          <strong>3. Funnel Need</strong>
+          <small>Decide whether product needs simple page or deep education funnel.</small>
+        </div>
+        <div class="flow-step">
+          <strong>4. Destination</strong>
+          <small>Use Eskayvie.com first, or microsite if business case is strong.</small>
+        </div>
+        <div class="flow-step">
+          <strong>5. Conversion</strong>
+          <small>Add to cart, WhatsApp lead, marketplace or official checkout.</small>
+        </div>
+        <div class="flow-step">
+          <strong>6. Reporting</strong>
+          <small>Track by product, campaign, channel, keyword and conversion.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>13. Decision Rule Before Creating Any New Product Microsite</h2>
+      <p>
+        A separate product microsite should not be created automatically. It should only be considered when there is a strong business reason.
+      </p>
+
+      <div class="grid-3">
+        <div class="mini-card">
+          <span class="tag green">Use Eskayvie.com</span>
+          <ul>
+            <li>For evergreen product information</li>
+            <li>For Google Search Ads starting point</li>
+            <li>For ecommerce conversion</li>
+            <li>For long-term SEO ownership</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <span class="tag orange">Use Campaign Page</span>
+          <ul>
+            <li>For promo or seasonal campaign</li>
+            <li>For specific audience angle</li>
+            <li>For funnel testing</li>
+            <li>Still under Eskayvie.com</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <span class="tag purple">Use Microsite If</span>
+          <ul>
+            <li>Campaign is long-term</li>
+            <li>Product needs deep education</li>
+            <li>Product has strong standalone demand</li>
+            <li>Tracking and SEO governance are clear</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Microsite Approval Checklist</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Does the product need a deeper education funnel?</td>
+            <td>If yes, a microsite may help explain the problem, solution and proof better than a normal product page.</td>
+          </tr>
+          <tr>
+            <td>Is there enough paid media budget to drive traffic?</td>
+            <td>A microsite should not be created without a clear traffic plan.</td>
+          </tr>
+          <tr>
+            <td>Is there enough search demand or campaign demand?</td>
+            <td>Microsites need a clear audience and demand source to justify maintenance.</td>
+          </tr>
+          <tr>
+            <td>Can we maintain content, tracking and compliance?</td>
+            <td>Every microsite adds operational workload.</td>
+          </tr>
+          <tr>
+            <td>How will the microsite support Eskayvie.com?</td>
+            <td>The microsite must not weaken master brand ownership.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>14. Phytax and Diffenz Microsite Consideration</h2>
+      <p>
+        Phytax and Diffenz both have potential for dedicated microsites, but the decision should depend on campaign purpose and funnel complexity.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Why Microsite Could Help</th>
+            <th>Recommended Caution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Phytax</strong></td>
+            <td>
+              Phytax may need a focused education funnel around body, metabolism, lifestyle, transformation story, product benefit and customer concern.
+            </td>
+            <td>
+              Start by strengthening Phytax content and conversion flow inside Eskayvie.com. Consider microsite only if campaign data shows strong demand and a need for deeper storytelling.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Diffenz</strong></td>
+            <td>
+              Diffenz may benefit from a dedicated immune support education funnel, family protection angle and product comparison story.
+            </td>
+            <td>
+              Avoid creating a separate domain too early. Use Eskayvie.com first, then test whether a dedicated microsite can improve conversion without splitting SEO authority.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout blue">
+        <strong>Recommended position</strong>
+        Phytax and Diffenz microsites should be treated as future growth options, not immediate default actions. The first priority is to make Eskayvie.com strong enough to convert product search traffic.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>15. Recommended Website Architecture</h2>
+      <p>
+        The cleanest structure is to keep Eskayvie.com as the main authority hub while allowing product microsites only for selected campaigns.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Asset Type</th>
+            <th>Example</th>
+            <th>Main Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Master product page</td>
+            <td>eskayvie.com/mindtropic<br>eskayvie.com/phytax<br>eskayvie.com/diffenz</td>
+            <td>Official product ownership, ecommerce, evergreen SEO and trust.</td>
+          </tr>
+          <tr>
+            <td>Campaign landing page</td>
+            <td>eskayvie.com/campaign/phytax<br>eskayvie.com/campaign/diffenz</td>
+            <td>Promo, funnel testing and paid campaign conversion while staying under Eskayvie.com.</td>
+          </tr>
+          <tr>
+            <td>Product microsite</td>
+            <td>mindtropic.com.my<br>potential Phytax microsite<br>potential Diffenz microsite</td>
+            <td>Focused direct conversion and deep product education, only when business case is strong.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>16. Reporting and Tracking Framework</h2>
+      <p>
+        If Eskayvie uses both Eskayvie.com and product microsites, reporting must be unified. Otherwise, performance will look fragmented.
+      </p>
+
+      <div class="grid-3">
+        <div class="mini-card">
+          <span class="tag blue">Track by Product</span>
+          <ul>
+            <li>Mindtropic</li>
+            <li>Phytax</li>
+            <li>Diffenz</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <span class="tag green">Track by Channel</span>
+          <ul>
+            <li>Facebook Ads</li>
+            <li>Instagram Ads</li>
+            <li>Google Ads</li>
+            <li>Organic search</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <span class="tag orange">Track by Conversion</span>
+          <ul>
+            <li>Add to cart</li>
+            <li>Purchase</li>
+            <li>WhatsApp click</li>
+            <li>Lead form</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <strong>Reporting principle</strong>
+        The team should not only compare websites. The team should report product performance by channel, landing destination and conversion action.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>17. Management Decisions Required</h2>
+      <ul>
+        <li>Confirm Eskayvie.com as the main brand, product, ecommerce and SEO authority hub.</li>
+        <li>Confirm Mindtropic.com.my as an existing campaign and conversion microsite, not a disconnected product brand.</li>
+        <li>Confirm that Phytax and Diffenz have potential for microsites, but only after clear business, funnel and tracking evaluation.</li>
+        <li>Decide that new product campaigns should use Eskayvie.com first unless there is a strong reason for a separate microsite.</li>
+        <li>Approve a standard traffic routing model for paid ads and organic search.</li>
+        <li>Approve one reporting framework across products, channels, websites and conversion actions.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>18. Final Recommendation</h2>
+      <div class="callout blue">
+        <strong>Recommended strategy</strong>
+        Keep Mindtropic.com.my because it already has campaign and SEO momentum. However, its role must be clearly defined as a Mindtropic campaign and conversion microsite. Eskayvie.com should remain the main brand hub, ecommerce hub, official product ownership hub and long-term SEO authority.
+      </div>
+      <p>
+        For Diffenz and Phytax, the current move to send Google Search Ads traffic to Eskayvie.com is a good starting point. It helps strengthen the master brand ecosystem and avoids repeating the same SEO ownership issue too early.
+      </p>
+      <p>
+        However, Eskayvie should not close the door on future microsites for Phytax and Diffenz. If the products gain strong campaign traction, need deeper education, and have clear conversion goals, dedicated microsites can be developed under a controlled framework.
+      </p>
+      <div class="quote">
+        The key is not microsite versus Eskayvie.com. The key is control. Eskayvie needs high-converting product funnels without losing master brand ownership.
+      </div>
+    </section>
+
+    <p class="footer-note">
+      Prepared as a project brief and strategic report for internal discussion. Version 2 includes potential microsite expansion for Phytax and Diffenz.
+    </p>
+  </main>
+</body>
+</html>
